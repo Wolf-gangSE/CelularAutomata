@@ -38,10 +38,16 @@ def criarGif(pathImagens, pathGifs, m):
             imagens.append(imageio.imread(pathImagens + filename))
     imageio.mimsave(pathGifs + 'exemplo' + str(m) + '.gif', imagens)
 
+def apagarArquivos(path):
+    dir = os.listdir(path)
+    for file in dir:
+        os.remove(path + file)
+
 
 if __name__ == "__main__":
     pathImagens = '/Users/lucas/Programacao/TC/CelularAutomata/Imagens/'
     pathGifs = '/Users/lucas/Programacao/TC/CelularAutomata/Gifs/'
+    apagarArquivos(pathGifs)
     for m in range(4):
         if m == 0:
             # GOL 100 iteracoes
@@ -59,3 +65,4 @@ if __name__ == "__main__":
             #  Onda, 70 iteracoes
             criaImagens(pathImagens, m, 70)
             criarGif(pathImagens, pathGifs, m)
+    apagarArquivos(pathImagens)
